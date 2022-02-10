@@ -1,24 +1,23 @@
 % 00420
-type(0, testimony).
-type(1, testimony).
-type(2, testimony).
-type(3, policy).
 type(4, policy).
 type(5, policy).
 type(6, policy).
 type(7, value).
 type(8, value).
 type(9, value).
+type(2, testimony).
+type(0, testimony).
+type(1, testimony).
+type(3, policy).
 
-reason(0, 3). % first one reason of the second one
-reason(1, 3).
-reason(2, 3).
-reason(5, 4). 
-reason(8, 5).
-reason(5, 6).
-reason(7, 6).
+link(1, 3, reason).
+link(5, 4, reason). 
+link(8, 5, reason).
+link(0, 3, reason). % first one reason of the second one
+link(2, 3, reason).
+link(5, 6, reason).
+link(7, 6, reason).
 
-evidence(_, _) :- fail.
 
 propositions(X) :- X = [testimony, value, policy, fact].
 evidence(X) :- X = [testimony, reference].
@@ -36,19 +35,8 @@ all_facts([H|T]) :- type(H, fact), all_facts(T).
 all_facts([]) :- !.
 
 
-not_member(_, []).
-not_member(X, [X|_]):- !, fail.
-not_member(X,[_|L]) :- not_member(X,L).
-
-%get_reasons([H|T], C) :- reason(H, C), is_proposition(H), not_member(H, T), get_reasons(T, C). 
-%get_reasons([X|[]], C) :- reason(X, C), is_proposition(C).
-%get_reasons([], C) :- is_proposition(C).
-
-% get_evidence([H|T], C) :- evidence(H, C), is_evidence(H), not_member(H, T), get_evidence(T, C). 
-% get_evidence([], C) :- is_proposition(C).
-
-get_reasons(X, C) :- findall(Y, reason(Y, C), X), all_proposition(X).
-get_evidence(X, C) :- findall(Y, evidence(Y, C), X), all_evidence(X).
+get_reasons(X, C) :- findall(Y, link(Y, C, reason), Z), same_set(X,Z), all_proposition(X).
+get_evidence(X, C) :- findall(Y, link(Y, C, evidence), Z), same_set(X,Z), all_evidence(X).
 
 argument(R, E, C) :- is_proposition(C), get_reasons(R, C), get_evidence(E, C).
 
@@ -60,6 +48,20 @@ evaluable(A) :- A = [R, E, C], argument(R, E, C), type(C, value), length(R, L), 
 evaluable(A) :- A = [R, E, C], argument(R, E, C), type(C, fact), length(R, L), L =\= 0, all_facts(R).
 evaluable(A) :- A = [R, E, C], argument(R, E, C), type(C, fact), length(R, L), L =\= 0, all_evidence(E).
 
-rec_eval(A) :- evaluable(A), A = [[H|T], E, C], A1 = [R1, E1, H], argument(R1, E1, H), rec_eval(A1).
-rec_eval(A) :- evaluable(A), A = [[], E, C].
+rec_eval(A) :- evaluable(A), A = [[H|_], _, _], A1 = [R1, E1, H], argument(R1, E1, H), rec_eval(A1), !.
+rec_eval(A) :- evaluable(A), A = [[], _, _].
 
+
+same_set([H|T], C) :- member(H, C), remove(C,H,C2), same_set(T,C2), !.
+same_set([],[]).
+
+remove([], _, []).
+remove([R|T], R, T).
+remove([H|T], R, [H|L]) :- R \= H, remove(T, R, L).
+
+
+not_member(_, []).
+not_member(X, [X|_]):- !, fail.
+not_member(X,[_|L]) :- not_member(X,L).
+       
+       
