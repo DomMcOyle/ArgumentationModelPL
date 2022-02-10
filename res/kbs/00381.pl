@@ -14,8 +14,7 @@ type(12, value).
 type(13, value).
 type(14, value).
 type(15, value).
-evidence(_, _) :- fail.
-reason(4, 3).
-reason(8, 7).
-reason(9, 7).
-reason(11, 10).
+link(4, 3, reason).
+link(8, 7, reason).
+link(9, 7, reason).
+link(11, 10, reason).

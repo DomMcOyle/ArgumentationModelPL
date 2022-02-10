@@ -14,8 +14,8 @@ type(12, value).
 type(13, testimony).
 type(14, fact).
 type(15, reference).
-reason(14, 13).
-reason(15, 13).
-reason(4, 5).
-reason(6, 7).
-reason(11, 10).
+link(14, 13, evidence).
+link(15, 13, evidence).
+link(4, 5, reason).
+link(6, 7, reason).
+link(11, 10, reason).

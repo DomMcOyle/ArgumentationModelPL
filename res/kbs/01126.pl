@@ -13,12 +13,11 @@ type(11, value).
 type(12, value).
 type(13, value).
 type(14, policy).
-evidence(_, _) :- fail.
-reason(3, 1).
-reason(3, 4).
-reason(11, 7).
-reason(8, 7).
-reason(9, 11).
-reason(10, 11).
-reason(6, 12).
-reason(7, 12).
+link(3, 1, reason).
+link(3, 4, reason).
+link(11, 7, reason).
+link(8, 7, reason).
+link(9, 11, reason).
+link(10, 11, reason).
+link(6, 12, reason).
+link(7, 12, reason).

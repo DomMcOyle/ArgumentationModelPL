@@ -24,10 +24,9 @@ type(22, testimony).
 type(23, testimony).
 type(24, testimony).
 type(25, value).
-evidence(_, _) :- fail.
-reason(6, 5).
-reason(11, 10).
-reason(14, 15).
-reason(16, 17).
-reason(18, 19).
-reason(20, 19).
+link(6, 5, reason).
+link(11, 10, reason).
+link(14, 15, reason).
+link(16, 17, reason).
+link(18, 19, reason).
+link(20, 19, reason).

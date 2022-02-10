@@ -10,9 +10,9 @@ type(8, value).
 type(9, value).
 type(10, testimony).
 type(11, testimony).
-reason(2, 1).
-reason(3, 1).
-reason(4, 1).
-reason(5, 1).
-reason(6, 1).
-reason(1, 0).
+link(2, 1, evidence).
+link(3, 1, evidence).
+link(4, 1, evidence).
+link(5, 1, evidence).
+link(6, 1, evidence).
+link(1, 0, reason).

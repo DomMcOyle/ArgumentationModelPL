@@ -13,5 +13,3 @@ type(11, testimony).
 type(12, testimony).
 type(13, testimony).
 type(14, policy).
-evidence(_, _) :- fail.
-reason(_, _) :- fail.

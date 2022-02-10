@@ -1,5 +1,4 @@
 type(0, value).
 type(1, policy).
 type(2, policy).
-evidence(_, _) :- fail.
-reason(0, 2).
+link(0, 2, reason).

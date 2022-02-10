@@ -4,6 +4,6 @@ type(2, value).
 type(3, testimony).
 type(4, fact).
 type(5, value).
-reason(3, 2).
-reason(1, 0).
-reason(4, 5).
+link(3, 2, evidence).
+link(1, 0, reason).
+link(4, 5, reason).

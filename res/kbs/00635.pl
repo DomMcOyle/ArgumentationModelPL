@@ -4,5 +4,4 @@ type(2, policy).
 type(3, value).
 type(4, value).
 type(5, reference).
-evidence(_, _) :- fail.
-reason(1, 0).
+link(1, 0, reason).

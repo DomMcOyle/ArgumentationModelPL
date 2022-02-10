@@ -6,6 +6,5 @@ type(4, fact).
 type(5, value).
 type(6, value).
 type(7, value).
-evidence(_, _) :- fail.
-reason(2, 1).
-reason(3, 1).
+link(2, 1, reason).
+link(3, 1, reason).

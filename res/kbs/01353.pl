@@ -11,5 +11,3 @@ type(9, value).
 type(10, value).
 type(11, value).
 type(12, policy).
-evidence(_, _) :- fail.
-reason(_, _) :- fail.

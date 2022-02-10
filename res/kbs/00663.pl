@@ -8,8 +8,8 @@ type(6, reference).
 type(7, value).
 type(8, policy).
 type(9, policy).
-reason(3, 0).
-reason(4, 0).
-reason(5, 2).
-reason(6, 2).
-reason(2, 1).
+link(3, 0, evidence).
+link(4, 0, evidence).
+link(5, 2, evidence).
+link(6, 2, evidence).
+link(2, 1, reason).

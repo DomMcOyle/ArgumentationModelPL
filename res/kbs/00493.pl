@@ -3,5 +3,3 @@ type(1, testimony).
 type(2, testimony).
 type(3, testimony).
 type(4, fact).
-evidence(_, _) :- fail.
-reason(_, _) :- fail.

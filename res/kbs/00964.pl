@@ -15,5 +15,4 @@ type(13, value).
 type(14, value).
 type(15, value).
 type(16, value).
-evidence(_, _) :- fail.
-reason(13, 12).
+link(13, 12, reason).

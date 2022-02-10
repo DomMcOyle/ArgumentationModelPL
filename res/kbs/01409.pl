@@ -22,5 +22,4 @@ type(20, reference).
 type(21, reference).
 type(22, value).
 type(23, value).
-reason(7, 6).
-reason(_, _) :- fail.
+link(7, 6, evidence).

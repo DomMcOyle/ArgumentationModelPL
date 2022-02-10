@@ -20,9 +20,8 @@ type(18, value).
 type(19, testimony).
 type(20, value).
 type(21, value).
-evidence(_, _) :- fail.
-reason(2, 1).
-reason(5, 4).
-reason(8, 7).
-reason(11, 10).
-reason(19, 18).
+link(2, 1, reason).
+link(5, 4, reason).
+link(8, 7, reason).
+link(11, 10, reason).
+link(19, 18, reason).

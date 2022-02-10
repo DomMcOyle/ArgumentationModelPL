@@ -5,9 +5,9 @@ type(3, fact).
 type(4, fact).
 type(5, value).
 type(6, reference).
-reason(6, 0).
-reason(6, 1).
-reason(6, 3).
-reason(6, 4).
-reason(0, 2).
-reason(1, 2).
+link(6, 0, evidence).
+link(6, 1, evidence).
+link(6, 3, evidence).
+link(6, 4, evidence).
+link(0, 2, reason).
+link(1, 2, reason).

@@ -12,8 +12,7 @@ type(10, fact).
 type(11, testimony).
 type(12, value).
 type(13, value).
-evidence(_, _) :- fail.
-reason(1, 0).
-reason(2, 1).
-reason(6, 5).
-reason(9, 13).
+link(1, 0, reason).
+link(2, 1, reason).
+link(6, 5, reason).
+link(9, 13, reason).

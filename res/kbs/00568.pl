@@ -10,5 +10,3 @@ type(8, value).
 type(9, testimony).
 type(10, testimony).
 type(11, testimony).
-evidence(_, _) :- fail.
-reason(_, _) :- fail.

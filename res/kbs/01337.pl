@@ -2,8 +2,7 @@ type(0, value).
 type(1, fact).
 type(2, fact).
 type(3, fact).
-evidence(_, _) :- fail.
-reason(2, 0).
-reason(3, 0).
-reason(1, 2).
-reason(1, 3).
+link(2, 0, reason).
+link(3, 0, reason).
+link(1, 2, reason).
+link(1, 3, reason).

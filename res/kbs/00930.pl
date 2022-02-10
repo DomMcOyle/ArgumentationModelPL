@@ -9,6 +9,5 @@ type(7, fact).
 type(8, reference).
 type(9, fact).
 type(10, reference).
-evidence(_, _) :- fail.
-reason(2, 4).
-reason(3, 4).
+link(2, 4, reason).
+link(3, 4, reason).

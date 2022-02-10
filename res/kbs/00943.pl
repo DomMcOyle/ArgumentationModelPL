@@ -10,7 +10,6 @@ type(8, policy).
 type(9, testimony).
 type(10, policy).
 type(11, value).
-evidence(_, _) :- fail.
-reason(5, 6).
-reason(5, 7).
-reason(11, 10).
+link(5, 6, reason).
+link(5, 7, reason).
+link(11, 10, reason).

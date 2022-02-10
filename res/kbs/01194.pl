@@ -8,6 +8,5 @@ type(6, testimony).
 type(7, testimony).
 type(8, value).
 type(9, fact).
-evidence(_, _) :- fail.
-reason(7, 8).
-reason(9, 8).
+link(7, 8, reason).
+link(9, 8, reason).

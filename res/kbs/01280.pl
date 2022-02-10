@@ -28,11 +28,10 @@ type(26, policy).
 type(27, value).
 type(28, policy).
 type(29, policy).
-evidence(_, _) :- fail.
-reason(6, 7).
-reason(15, 16).
-reason(18, 17).
-reason(20, 19).
-reason(23, 21).
-reason(23, 26).
-reason(25, 26).
+link(6, 7, reason).
+link(15, 16, reason).
+link(18, 17, reason).
+link(20, 19, reason).
+link(23, 21, reason).
+link(23, 26, reason).
+link(25, 26, reason).

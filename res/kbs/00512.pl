@@ -9,5 +9,3 @@ type(7, value).
 type(8, value).
 type(9, policy).
 type(10, value).
-evidence(_, _) :- fail.
-reason(_, _) :- fail.

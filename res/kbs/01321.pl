@@ -13,5 +13,3 @@ type(11, testimony).
 type(12, value).
 type(13, value).
 type(14, testimony).
-evidence(_, _) :- fail.
-reason(_, _) :- fail.

@@ -12,10 +12,9 @@ type(10, value).
 type(11, value).
 type(12, policy).
 type(13, policy).
-evidence(_, _) :- fail.
-reason(1, 0).
-reason(2, 0).
-reason(3, 0).
-reason(10, 9).
-reason(11, 9).
-reason(9, 12).
+link(1, 0, reason).
+link(2, 0, reason).
+link(3, 0, reason).
+link(10, 9, reason).
+link(11, 9, reason).
+link(9, 12, reason).

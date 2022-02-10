@@ -8,5 +8,3 @@ type(6, testimony).
 type(7, fact).
 type(8, policy).
 type(9, policy).
-evidence(_, _) :- fail.
-reason(_, _) :- fail.

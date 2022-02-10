@@ -2,9 +2,6 @@ import json
 from os import listdir
 # add wrapper
 
-no_evidence_srt = "evidence(_, _) :- fail."
-no_reason_str = "reason(_, _) :- fail."
-
 
 def parse_json_to_pl(file_name):
     to_return = []
@@ -17,20 +14,14 @@ def parse_json_to_pl(file_name):
         for elem in data["prop_labels"]:
             to_return.append(f"type({i}, {elem}).")
             i += 1
-    if len(data["evidences"]) == 0:
-        to_return.append(no_evidence_srt)
-    else:
-        for elem in data["evidences"]:
-            range_elems = range(elem[0][0], elem[0][1] + 1)
-            for evidence_elem in range_elems:
-                to_return.append(f"reason({evidence_elem}, {elem[1]}).")
-    if len(data["reasons"]) == 0:
-        to_return.append(no_reason_str)
-    else:
-        for elem in data["reasons"]:
-            range_elems = range(elem[0][0], elem[0][1]+1)
-            for reason_elem in range_elems:
-                to_return.append(f"reason({reason_elem}, {elem[1]}).")
+    for elem in data["evidences"]:
+        range_elems = range(elem[0][0], elem[0][1] + 1)
+        for evidence_elem in range_elems:
+            to_return.append(f"link({evidence_elem}, {elem[1]}, evidence).")
+    for elem in data["reasons"]:
+        range_elems = range(elem[0][0], elem[0][1]+1)
+        for reason_elem in range_elems:
+            to_return.append(f"link({reason_elem}, {elem[1]}, reason).")
     no_duplicates = list(dict.fromkeys(to_return))
     f.close()
     return no_duplicates

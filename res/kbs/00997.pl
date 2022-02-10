@@ -7,5 +7,3 @@ type(5, value).
 type(6, policy).
 type(7, policy).
 type(8, testimony).
-evidence(_, _) :- fail.
-reason(_, _) :- fail.

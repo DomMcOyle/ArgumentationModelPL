@@ -18,7 +18,6 @@ type(16, value).
 type(17, value).
 type(18, value).
 type(19, value).
-evidence(_, _) :- fail.
-reason(1, 2).
-reason(8, 9).
-reason(19, 18).
+link(1, 2, reason).
+link(8, 9, reason).
+link(19, 18, reason).

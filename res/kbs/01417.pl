@@ -16,8 +16,7 @@ type(14, value).
 type(15, fact).
 type(16, value).
 type(17, policy).
-evidence(_, _) :- fail.
-reason(1, 0).
-reason(6, 5).
-reason(10, 11).
-reason(11, 12).
+link(1, 0, reason).
+link(6, 5, reason).
+link(10, 11, reason).
+link(11, 12, reason).

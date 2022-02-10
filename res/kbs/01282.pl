@@ -5,6 +5,5 @@ type(3, fact).
 type(4, testimony).
 type(5, testimony).
 type(6, fact).
-evidence(_, _) :- fail.
-reason(3, 2).
-reason(5, 4).
+link(3, 2, reason).
+link(5, 4, reason).

@@ -22,12 +22,11 @@ type(20, fact).
 type(21, policy).
 type(22, policy).
 type(23, reference).
-evidence(_, _) :- fail.
-reason(4, 5).
-reason(7, 6).
-reason(10, 8).
-reason(9, 8).
-reason(9, 10).
-reason(12, 11).
-reason(19, 21).
-reason(20, 21).
+link(4, 5, reason).
+link(7, 6, reason).
+link(10, 8, reason).
+link(9, 8, reason).
+link(9, 10, reason).
+link(12, 11, reason).
+link(19, 21, reason).
+link(20, 21, reason).

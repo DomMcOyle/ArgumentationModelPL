@@ -5,5 +5,3 @@ type(3, testimony).
 type(4, testimony).
 type(5, value).
 type(6, value).
-evidence(_, _) :- fail.
-reason(_, _) :- fail.

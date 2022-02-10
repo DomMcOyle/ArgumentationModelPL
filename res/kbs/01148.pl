@@ -4,8 +4,7 @@ type(2, value).
 type(3, value).
 type(4, value).
 type(5, value).
-evidence(_, _) :- fail.
-reason(2, 0).
-reason(3, 0).
-reason(5, 3).
-reason(4, 5).
+link(2, 0, reason).
+link(3, 0, reason).
+link(5, 3, reason).
+link(4, 5, reason).

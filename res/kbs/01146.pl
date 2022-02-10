@@ -21,5 +21,4 @@ type(19, testimony).
 type(20, testimony).
 type(21, testimony).
 type(22, policy).
-evidence(_, _) :- fail.
-reason(16, 17).
+link(16, 17, reason).

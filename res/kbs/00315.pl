@@ -9,10 +9,9 @@ type(7, value).
 type(8, value).
 type(9, value).
 type(10, policy).
-evidence(_, _) :- fail.
-reason(0, 5).
-reason(1, 5).
-reason(2, 5).
-reason(3, 5).
-reason(4, 5).
-reason(8, 7).
+link(0, 5, reason).
+link(1, 5, reason).
+link(2, 5, reason).
+link(3, 5, reason).
+link(4, 5, reason).
+link(8, 7, reason).

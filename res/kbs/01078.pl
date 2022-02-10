@@ -7,5 +7,4 @@ type(5, value).
 type(6, policy).
 type(7, policy).
 type(8, policy).
-evidence(_, _) :- fail.
-reason(4, 3).
+link(4, 3, reason).

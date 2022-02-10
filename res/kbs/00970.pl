@@ -23,9 +23,9 @@ type(21, fact).
 type(22, value).
 type(23, value).
 type(24, value).
-reason(14, 13).
-reason(15, 13).
-reason(1, 0).
-reason(9, 10).
-reason(10, 11).
-reason(21, 20).
+link(14, 13, evidence).
+link(15, 13, evidence).
+link(1, 0, reason).
+link(9, 10, reason).
+link(10, 11, reason).
+link(21, 20, reason).

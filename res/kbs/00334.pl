@@ -4,9 +4,8 @@ type(2, policy).
 type(3, value).
 type(4, value).
 type(5, value).
-evidence(_, _) :- fail.
-reason(3, 2).
-reason(4, 2).
-reason(5, 2).
-reason(4, 3).
-reason(5, 3).
+link(3, 2, reason).
+link(4, 2, reason).
+link(5, 2, reason).
+link(4, 3, reason).
+link(5, 3, reason).

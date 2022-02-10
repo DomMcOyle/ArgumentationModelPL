@@ -23,11 +23,10 @@ type(21, testimony).
 type(22, testimony).
 type(23, testimony).
 type(24, policy).
-evidence(_, _) :- fail.
-reason(6, 5).
-reason(8, 5).
-reason(6, 8).
-reason(11, 12).
-reason(22, 23).
-reason(22, 24).
-reason(23, 24).
+link(6, 5, reason).
+link(8, 5, reason).
+link(6, 8, reason).
+link(11, 12, reason).
+link(22, 23, reason).
+link(22, 24, reason).
+link(23, 24, reason).

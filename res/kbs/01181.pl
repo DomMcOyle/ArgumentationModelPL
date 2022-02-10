@@ -9,8 +9,7 @@ type(7, fact).
 type(8, value).
 type(9, value).
 type(10, value).
-evidence(_, _) :- fail.
-reason(2, 0).
-reason(2, 3).
-reason(4, 3).
-reason(5, 3).
+link(2, 0, reason).
+link(2, 3, reason).
+link(4, 3, reason).
+link(5, 3, reason).

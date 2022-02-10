@@ -11,5 +11,5 @@ type(9, fact).
 type(10, value).
 type(11, value).
 type(12, policy).
-reason(4, 3).
-reason(11, 12).
+link(4, 3, evidence).
+link(11, 12, reason).

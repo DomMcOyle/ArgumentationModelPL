@@ -13,10 +13,10 @@ type(11, policy).
 type(12, reference).
 type(13, reference).
 type(14, reference).
-reason(12, 3).
-reason(14, 4).
-reason(3, 2).
-reason(4, 2).
-reason(6, 2).
-reason(9, 8).
-reason(11, 10).
+link(12, 3, evidence).
+link(14, 4, evidence).
+link(3, 2, reason).
+link(4, 2, reason).
+link(6, 2, reason).
+link(9, 8, reason).
+link(11, 10, reason).

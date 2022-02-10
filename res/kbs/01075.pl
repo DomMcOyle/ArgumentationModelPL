@@ -7,5 +7,4 @@ type(5, fact).
 type(6, value).
 type(7, value).
 type(8, value).
-evidence(_, _) :- fail.
-reason(4, 5).
+link(4, 5, reason).
