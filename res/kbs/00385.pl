@@ -1,0 +1,19 @@
+type(0, fact).
+type(1, fact).
+type(2, fact).
+type(3, value).
+type(4, value).
+type(5, value).
+type(6, value).
+type(7, value).
+type(8, value).
+type(9, value).
+type(10, fact).
+evidence(_, _) :- fail.
+reason(1, 0).
+reason(2, 0).
+reason(3, 0).
+reason(4, 5).
+reason(7, 6).
+reason(8, 6).
+reason(10, 9).

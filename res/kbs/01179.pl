@@ -1,0 +1,20 @@
+type(0, policy).
+type(1, value).
+type(2, value).
+type(3, policy).
+type(4, value).
+type(5, value).
+type(6, policy).
+type(7, policy).
+type(8, fact).
+type(9, value).
+type(10, fact).
+type(11, policy).
+type(12, value).
+type(13, value).
+evidence(_, _) :- fail.
+reason(2, 1).
+reason(4, 3).
+reason(8, 9).
+reason(9, 10).
+reason(12, 11).

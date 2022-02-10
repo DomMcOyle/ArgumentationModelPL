@@ -1,0 +1,24 @@
+type(0, testimony).
+type(1, testimony).
+type(2, testimony).
+type(3, testimony).
+type(4, value).
+type(5, value).
+type(6, testimony).
+type(7, value).
+type(8, testimony).
+type(9, testimony).
+type(10, value).
+type(11, value).
+type(12, policy).
+type(13, value).
+type(14, value).
+type(15, testimony).
+type(16, value).
+type(17, value).
+type(18, policy).
+evidence(_, _) :- fail.
+reason(0, 4).
+reason(1, 4).
+reason(6, 5).
+reason(10, 12).

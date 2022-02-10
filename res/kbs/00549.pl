@@ -1,0 +1,13 @@
+type(0, fact).
+type(1, fact).
+type(2, fact).
+type(3, fact).
+type(4, fact).
+type(5, value).
+type(6, reference).
+reason(6, 0).
+reason(6, 1).
+reason(6, 3).
+reason(6, 4).
+reason(0, 2).
+reason(1, 2).

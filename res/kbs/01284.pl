@@ -1,0 +1,9 @@
+type(0, value).
+type(1, value).
+type(2, value).
+type(3, testimony).
+type(4, fact).
+type(5, value).
+reason(3, 2).
+reason(1, 0).
+reason(4, 5).

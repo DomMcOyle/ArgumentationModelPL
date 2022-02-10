@@ -1,0 +1,20 @@
+type(0, testimony).
+type(1, testimony).
+type(2, testimony).
+type(3, testimony).
+type(4, testimony).
+type(5, value).
+type(6, value).
+type(7, value).
+type(8, fact).
+type(9, value).
+type(10, value).
+type(11, fact).
+type(12, testimony).
+evidence(_, _) :- fail.
+reason(3, 4).
+reason(7, 6).
+reason(8, 7).
+reason(10, 9).
+reason(11, 9).
+reason(12, 9).
