@@ -38,7 +38,7 @@ all_facts([]) :- !.
 get_reasons(X, C) :- findall(Y, link(Y, C, reason), Z), same_set(X,Z), all_proposition(X).
 get_evidence(X, C) :- findall(Y, link(Y, C, evidence), Z), same_set(X,Z), all_evidence(X).
 
-argument(R, E, C) :- is_proposition(C), get_reasons(R, C), get_evidence(E, C).
+argument(A) :- A = [R,E,C] ,is_proposition(C), get_reasons(R, C), get_evidence(E, C).
 
 evaluable(A) :- A = [R, E, C], argument(R, E, C), type(C, testimony).
 
@@ -48,7 +48,7 @@ evaluable(A) :- A = [R, E, C], argument(R, E, C), type(C, value), length(R, L), 
 evaluable(A) :- A = [R, E, C], argument(R, E, C), type(C, fact), length(R, L), L =\= 0, all_facts(R).
 evaluable(A) :- A = [R, E, C], argument(R, E, C), type(C, fact), length(R, L), L =\= 0, all_evidence(E).
 
-rec_eval(A) :- evaluable(A), A = [[H|_], _, _], A1 = [R1, E1, H], argument(R1, E1, H), rec_eval(A1), !.
+rec_eval(A) :- evaluable(A), A = [[H|_], _, _], A1 = [R1, E1, H], argument(R1, E1, H), rec_eval(A1).
 rec_eval(A) :- evaluable(A), A = [[], _, _].
 
 
