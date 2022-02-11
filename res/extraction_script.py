@@ -7,9 +7,18 @@ def parse_json_to_pl(file_name):
     to_return = []
     f = open(file_name, mode="r")
     data = json.load(f)
+
+    f_txt = open(file_name.replace(".ann.json", ".txt"))
+    data_txt = f_txt.read()
+    f_txt.close()
+
     if len(data["prop_labels"]) == 0:
         return to_return
     else:
+        for idx, prop_offset in enumerate(data["prop_offsets"]):
+            current_prop = "'" + data_txt[prop_offset[0]:prop_offset[1]].strip().replace("'", "\\'") + "'"
+            to_return.append(f"label({current_prop}, {idx}).")
+
         i = 0
         for elem in data["prop_labels"]:
             to_return.append(f"type({i}, {elem}).")
@@ -25,6 +34,7 @@ def parse_json_to_pl(file_name):
     no_duplicates = list(dict.fromkeys(to_return))
     f.close()
     return no_duplicates
+
 
 def obtain_kbs(dir_name, dest_dir):
     for elem in listdir(dir_name):

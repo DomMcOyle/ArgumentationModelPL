@@ -1,3 +1,6 @@
+label('Repeated phone calls are torture.', 0).
+label('There is NO need for this when there is a mail system.', 1).
+label('One completed phone call should be enough.', 2).
 type(0, value).
 type(1, value).
 type(2, policy).
