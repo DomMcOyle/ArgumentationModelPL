@@ -1,23 +1,22 @@
 % 00420
-type(4, policy).
-type(5, policy).
-type(6, policy).
-type(7, value).
-type(8, value).
-type(9, value).
-type(2, testimony).
-type(0, testimony).
-type(1, testimony).
-type(3, policy).
+type(e, policy).
+type(f, policy).
+type(g, policy).
+type(h, value).
+type(i, value).
+type(j, value).
+type(c, testimony).
+type(a, testimony).
+type(b, testimony).
+type(d, policy).
 
-link(1, 3, reason).
-link(5, 4, reason). 
-link(8, 5, reason).
-link(0, 3, reason). % first one reason of the second one
-link(2, 3, reason).
-link(5, 6, reason).
-link(7, 6, reason).
-
+link(b, d, reason).
+link(f, e, reason). 
+link(i, f, reason).
+link(a, d, reason). % first one reason of the second one
+link(c, d, reason).
+link(f, g, reason).
+link(h, g, reason).
 
 propositions(X) :- X = [testimony, value, policy, fact].
 evidence(X) :- X = [testimony, reference].
@@ -34,24 +33,28 @@ all_evidence([]) :- !.
 all_facts([H|T]) :- type(H, fact), all_facts(T).
 all_facts([]) :- !.
 
-
+% recover all the reasons for a given claim
 get_reasons(X, C) :- findall(Y, link(Y, C, reason), Z), same_set(X,Z), all_proposition(X).
-get_evidence(X, C) :- findall(Y, link(Y, C, evidence), Z), same_set(X,Z), all_evidence(X).
+% recover all the evidences for a given claim
+get_evidences(X, C) :- findall(Y, link(Y, C, evidence), Z), same_set(X,Z), all_evidence(X).
 
-argument(R, E, C) :- is_proposition(C), get_reasons(R, C), get_evidence(E, C).
+% definition of argument
+argument(A) :- A = [R,E,C] ,is_proposition(C), get_reasons(R, C), get_evidences(E, C).
 
-evaluable(A) :- A = [R, E, C], argument(R, E, C), type(C, testimony).
+% or clauses for the definition of evaluable
+evaluable(A) :- A = [_, _, C], argument(A), type(C, testimony).
 
-evaluable(A) :- A = [R, E, C], argument(R, E, C), type(C, policy), length(R, L), L =\= 0.
-evaluable(A) :- A = [R, E, C], argument(R, E, C), type(C, value), length(R, L), L =\= 0.
+evaluable(A) :- A = [R, _, C], argument(A), type(C, policy), length(R, L), L =\= 0.
+evaluable(A) :- A = [R, _, C], argument(A), type(C, value), length(R, L), L =\= 0.
 
-evaluable(A) :- A = [R, E, C], argument(R, E, C), type(C, fact), length(R, L), L =\= 0, all_facts(R).
-evaluable(A) :- A = [R, E, C], argument(R, E, C), type(C, fact), length(R, L), L =\= 0, all_evidence(E).
+evaluable(A) :- A = [R, _, C], argument(A), type(C, fact), length(R, L), L =\= 0, all_facts(R).
+evaluable(A) :- A = [R, E, C], argument(A), type(C, fact), length(R, L), L =\= 0, all_evidence(E).
 
-rec_eval(A) :- evaluable(A), A = [[H|_], _, _], A1 = [R1, E1, H], argument(R1, E1, H), rec_eval(A1), !.
+% definition of recursive evaluation
+rec_eval(A) :- evaluable(A), A = [[H|_], _, _], A1 = [_, _, H], argument(A1), rec_eval(A1).
 rec_eval(A) :- evaluable(A), A = [[], _, _].
 
-
+% utilities
 same_set([H|T], C) :- member(H, C), remove(C,H,C2), same_set(T,C2), !.
 same_set([],[]).
 
