@@ -1,8 +1,8 @@
-label('Off the top, I believe NYC has similar laws where business are not allowed to charge extra for the use of credit cards', 0).
-label('however it seems online payments to the city (taxes, water bill, traffic ticket, etc) using a credit card are still assessed a processing fee.', 1).
-label('It seems NYC itself is confused about this.', 2).
-type(0, fact).
-type(1, fact).
-type(2, value).
-link(0, 2, reason).
-link(1, 2, reason).
+label('Off the top, I believe NYC has similar laws where business are not allowed to charge extra for the use of credit cards', a).
+label('however it seems online payments to the city (taxes, water bill, traffic ticket, etc) using a credit card are still assessed a processing fee.', b).
+label('It seems NYC itself is confused about this.', c).
+type(a, fact).
+type(b, fact).
+type(c, value).
+link(a, c, reason).
+link(b, c, reason).

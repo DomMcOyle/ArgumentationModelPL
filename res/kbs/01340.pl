@@ -1,18 +1,18 @@
-label('Some problems that debt collectors and buyers have with giving consumers this information arises in the field of Electronic Data Interchange.', 0).
-label('Here, not all debts, especially with interest are calculated the same way,', 1).
-label('and since there are fees, such as statutory attorneys fees, and court costs, which can be added to the balance,', 2).
-label('calculating the balance becomes cumbersome when the data is transferred among Trading Partners on a daily basis', 3).
-label('because the data gets lost in translation over day-to-day lags.', 4).
-label('Computers don\'t think the same way people do', 5).
-label('and what we think is a simple calculation is muddled when partial payments are added and the data is transmitted between parties.', 6).
-type(0, value).
-type(1, fact).
-type(2, fact).
-type(3, value).
-type(4, fact).
-type(5, value).
-type(6, value).
-link(1, 0, reason).
-link(3, 0, reason).
-link(2, 3, reason).
-link(4, 3, reason).
+label('Some problems that debt collectors and buyers have with giving consumers this information arises in the field of Electronic Data Interchange.', a).
+label('Here, not all debts, especially with interest are calculated the same way,', b).
+label('and since there are fees, such as statutory attorneys fees, and court costs, which can be added to the balance,', c).
+label('calculating the balance becomes cumbersome when the data is transferred among Trading Partners on a daily basis', d).
+label('because the data gets lost in translation over day-to-day lags.', e).
+label('Computers don\'t think the same way people do', f).
+label('and what we think is a simple calculation is muddled when partial payments are added and the data is transmitted between parties.', g).
+type(a, value).
+type(b, fact).
+type(c, fact).
+type(d, value).
+type(e, fact).
+type(f, value).
+type(g, value).
+link(b, a, reason).
+link(d, a, reason).
+link(c, d, reason).
+link(e, d, reason).

@@ -1,7 +1,7 @@
-label('Let\'s keep it as simple as possible.', 0).
-label('Based on 3rd party disclosure statue blocking the ID benifits the consumer.', 1).
-label('One never knows who is at the other end of the phone.', 2).
-type(0, policy).
-type(1, value).
-type(2, value).
-link(2, 1, reason).
+label('Let\'s keep it as simple as possible.', a).
+label('Based on 3rd party disclosure statue blocking the ID benifits the consumer.', b).
+label('One never knows who is at the other end of the phone.', c).
+type(a, policy).
+type(b, value).
+type(c, value).
+link(c, b, reason).

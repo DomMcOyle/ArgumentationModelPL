@@ -3,6 +3,13 @@ from os import listdir
 # add wrapper
 
 
+def encode_number(number):
+    mod = number % 26
+    letter = chr(mod + 97)
+    repeat = int(number / 26)
+    return letter * (repeat + 1)
+
+
 def parse_json_to_pl(file_name):
     to_return = []
     f = open(file_name, mode="r")
@@ -17,20 +24,20 @@ def parse_json_to_pl(file_name):
     else:
         for idx, prop_offset in enumerate(data["prop_offsets"]):
             current_prop = "'" + data_txt[prop_offset[0]:prop_offset[1]].strip().replace("'", "\\'") + "'"
-            to_return.append(f"label({current_prop}, {idx}).")
+            to_return.append(f"label({current_prop}, {encode_number(idx)}).")
 
         i = 0
         for elem in data["prop_labels"]:
-            to_return.append(f"type({i}, {elem}).")
+            to_return.append(f"type({encode_number(i)}, {elem}).")
             i += 1
     for elem in data["evidences"]:
         range_elems = range(elem[0][0], elem[0][1] + 1)
         for evidence_elem in range_elems:
-            to_return.append(f"link({evidence_elem}, {elem[1]}, evidence).")
+            to_return.append(f"link({encode_number(evidence_elem)}, {encode_number(elem[1])}, evidence).")
     for elem in data["reasons"]:
         range_elems = range(elem[0][0], elem[0][1]+1)
         for reason_elem in range_elems:
-            to_return.append(f"link({reason_elem}, {elem[1]}, reason).")
+            to_return.append(f"link({encode_number(reason_elem)}, {encode_number(elem[1])}, reason).")
     no_duplicates = list(dict.fromkeys(to_return))
     f.close()
     return no_duplicates
