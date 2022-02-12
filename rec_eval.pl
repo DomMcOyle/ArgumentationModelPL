@@ -1,22 +1,4 @@
-% 00420
-type(e, policy).
-type(f, policy).
-type(g, policy).
-type(h, value).
-type(i, value).
-type(j, value).
-type(c, testimony).
-type(a, testimony).
-type(b, testimony).
-type(d, policy).
-
-link(b, d, reason).
-link(f, e, reason). 
-link(i, f, reason).
-link(a, d, reason). % first one reason of the second one
-link(c, d, reason).
-link(f, g, reason).
-link(h, g, reason).
+:- module(rec_eval, [get_reasons/2, get_evidences/2, argument/1, rec_eval/1]).
 
 propositions(X) :- X = [testimony, value, policy, fact].
 evidence(X) :- X = [testimony, reference].
@@ -39,7 +21,7 @@ get_reasons(X, C) :- findall(Y, link(Y, C, reason), Z), same_set(X,Z), all_propo
 get_evidences(X, C) :- findall(Y, link(Y, C, evidence), Z), same_set(X,Z), all_evidence(X).
 
 % definition of argument
-argument(A) :- A = [R,E,C] ,is_proposition(C), get_reasons(R, C), get_evidences(E, C).
+argument(A) :- A = [R,E,C], is_proposition(C), get_reasons(R, C), get_evidences(E, C).
 
 % or clauses for the definition of evaluable
 evaluable(A) :- A = [_, _, C], argument(A), type(C, testimony).
