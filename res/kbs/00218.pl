@@ -1,4 +1,4 @@
-label('No federal rules.', 0).
-label('Allow States continued enforcement of their state laws.', 1).
-type(0, policy).
-type(1, policy).
+label('No federal rules.', a).
+label('Allow States continued enforcement of their state laws.', b).
+type(a, policy).
+type(b, policy).

@@ -1,21 +1,21 @@
-label('The CFPB should ban workplace calls completely.', 0).
-label('Consumers provided a home phone number when they take on the debt', 1).
-label('and that should be the number they call to collect it.', 2).
-label('Communicating by registered/certified letter should also be the alternate method not workplace calls.', 3).
-label('Second Massachusetts limiting the total number of calls is a fabulous idea.', 4).
-label('We don\'t throw debtors in prison today', 5).
-label('yet the ridiculous amount of abuse and scorn they must endure is totally unacceptable.', 6).
-label('CFPB desperately needs to clean up the debt collection industry.', 7).
-type(0, policy).
-type(1, fact).
-type(2, policy).
-type(3, policy).
-type(4, value).
-type(5, fact).
-type(6, value).
-type(7, policy).
-link(1, 0, reason).
-link(2, 0, reason).
-link(6, 4, reason).
-link(7, 4, reason).
-link(6, 7, reason).
+label('The CFPB should ban workplace calls completely.', a).
+label('Consumers provided a home phone number when they take on the debt', b).
+label('and that should be the number they call to collect it.', c).
+label('Communicating by registered/certified letter should also be the alternate method not workplace calls.', d).
+label('Second Massachusetts limiting the total number of calls is a fabulous idea.', e).
+label('We don\'t throw debtors in prison today', f).
+label('yet the ridiculous amount of abuse and scorn they must endure is totally unacceptable.', g).
+label('CFPB desperately needs to clean up the debt collection industry.', h).
+type(a, policy).
+type(b, fact).
+type(c, policy).
+type(d, policy).
+type(e, value).
+type(f, fact).
+type(g, value).
+type(h, policy).
+link(b, a, reason).
+link(c, a, reason).
+link(g, e, reason).
+link(h, e, reason).
+link(g, h, reason).
