@@ -8,7 +8,7 @@ propositions(PropositionsSet) :- PropositionsSet = [testimony, value, policy, fa
 evidence(EvidenceSet) :- EvidenceSet = [testimony, reference].
 
 % support predicates that are provable if a given proposition belongs to the set "proposition" or "evidence"
-is_evidence(PossibleEvidence) :- type(PossibileEvidence, CorrespondingType), evidence(EvidenceSet), member(CorrespondingType, EvidenceSet).
+is_evidence(PossibleEvidence) :- type(PossibleEvidence, CorrespondingType), evidence(EvidenceSet), member(CorrespondingType, EvidenceSet).
 
 is_proposition(PossibileProposition) :- type(PossibileProposition, CorrespondingType), propositions(PropositionsSet), 
                                         member(CorrespondingType, PropositionsSet).

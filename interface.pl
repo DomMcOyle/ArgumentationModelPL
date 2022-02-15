@@ -1,5 +1,5 @@
 % Directives to the interpreter
-:- use_module('rec_eval.pl').
+:- use_module('core.pl').
 :- dynamic loaded_kb/1. % loaded_kb is used to "store" the term indicating the absolute path of the loaded KB
 
 
@@ -16,7 +16,8 @@ main :- write('Insert absolute path of the KB: '),
 input_to_atom_list(AlistI) :-
     read_line_to_codes(user_input, Input),
 	string_to_atom(Input,IA),
-	atomic_list_concat(AlistI,' ',IA).
+	atomic_list_concat(AlistI,' ',IA),
+	rec_print(AlistI).
 
 
 % Handles all the input (Aquistions, conversion to atoms and execution)
@@ -73,7 +74,7 @@ process_input([show, evaluables]):- findall(A, rec_eval(A), EvaluablesList), pri
 process_input([show, values]) :- findall(A, type(A, value), ValuesList), print_list(ValuesList).
 process_input([show, facts]):- findall(A, type(A, fact), FactsList), print_list(FactsList).
 process_input([show, references]):- findall(A, type(A, reference), RefList), print_list(RefList).
-process_input([show, policies]):- findall(A, type(A, policy), PoliciesList), print_list(PliciesList).
+process_input([show, policies]):- findall(A, type(A, policy), PoliciesList), print_list(PoliciesList).
 process_input([show, testimonies]) :- findall(A, type(A, testimony), TestimoniesList), print_list(TestimoniesList).
 process_input([type, Label]):- type(Label, LabelType), print(LabelType), nl.
 process_input([is, ARG, evaluable]):- term_string(ConvertedARG, ARG), convert_answer(rec_eval(ConvertedARG), Value), print(Value), nl.
