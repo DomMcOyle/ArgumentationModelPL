@@ -31,8 +31,10 @@ get_reasons(Reasons, Conclusion) :- findall(Y, link(Y, Conclusion, reason), Reas
 % recover all the evidences for a given conclusion
 get_evidences(Evidences, Conclusion) :- findall(Y, link(Y, Conclusion, evidence), EvidencesList), same_set(Evidences, EvidencesList), all_evidence(Evidences).
 
-% definition of argument
-argument(A) :- A = [R, E, C], is_proposition(C), get_reasons(R, C), get_evidences(E, C).
+% definition of argument. Has different behavour depending on the necessity of generating subsets or only checking them
+argument(A) :- (var(A) -> 
+	A = [R, E, C], is_proposition(C), get_reasons(AllR, C), is_subset(AllR, R), get_evidences(AllE, C), is_subset(AllE, E); 
+	A = [R, E, C], is_proposition(C), get_reasons(AllR, C), asubset(AllR, R), get_evidences(AllE, C), asubset(AllE, E)).
 
 % or clauses for the definition of evaluable
 % first condition
@@ -66,4 +68,13 @@ not_member(_, []).
 not_member(X, [X|_]):- !, fail.
 not_member(X, [_|L]) :- not_member(X, L).
        
-       
+
+%checks if a given set Sub is a subset of SuperSet (Can generate all the ordered subset of SuperSet)   
+asubset([], []).
+asubset([E|Tail], [E|NTail]):- asubset(Tail, NTail).
+asubset([_|Tail], NTail):- asubset(Tail, NTail).
+
+
+%checks if a given set Sub is a subset of SuperSet
+is_subset(SuperSet, Sub) :- asubset(SuperSet, SubSet), same_set(SubSet, Sub).
+
