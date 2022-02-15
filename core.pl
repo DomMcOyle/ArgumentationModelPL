@@ -1,5 +1,5 @@
 % pre processor directives: the following propositions are the one exported to the interface
-:- module(rec_eval, [get_reasons/2, get_evidences/2, argument/1, rec_eval/1]).
+:- module(core, [get_reasons/2, get_evidences/2, argument/1, rec_eval/1]).
 
 % definition of the set of "proposition"...
 propositions(PropositionsSet) :- PropositionsSet = [testimony, value, policy, fact].

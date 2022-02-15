@@ -16,8 +16,7 @@ main :- write('Insert absolute path of the KB: '),
 input_to_atom_list(AlistI) :-
     read_line_to_codes(user_input, Input),
 	string_to_atom(Input,IA),
-	atomic_list_concat(AlistI,' ',IA),
-	rec_print(AlistI).
+	atomic_list_concat(AlistI,' ',IA).
 
 
 % Handles all the input (Aquistions, conversion to atoms and execution)
@@ -56,8 +55,8 @@ print_arguments([[R, E, C]|[]]) :- rec_print(["argument with conclusion: ", C, "
 print_arguments([[R, E, C]|T]) :- rec_print(["argument with conclusion: ", C, "\nhas relation set: ", R, "\nhas evidence set: ", E, "\n"]), print_arguments(T).
 
 
-% Converts the answer from its unified value to the atom 'yes', if the value is true, 'no' otherwise
-convert_answer(A, Value) :- (A -> Value = yes; Value = no).
+% Converts the answer from its unified value to the atom unified with TrueValue, if the value is true, with FalseValue otherwise
+convert_answer(A, Value, TrueValue, FalseValue) :- (A -> Value = TrueValue; Value = FalseValue).
 
 
 % Custom print for the propositions labels
@@ -77,8 +76,8 @@ process_input([show, references]):- findall(A, type(A, reference), RefList), pri
 process_input([show, policies]):- findall(A, type(A, policy), PoliciesList), print_list(PoliciesList).
 process_input([show, testimonies]) :- findall(A, type(A, testimony), TestimoniesList), print_list(TestimoniesList).
 process_input([type, Label]):- type(Label, LabelType), print(LabelType), nl.
-process_input([is, ARG, evaluable]):- term_string(ConvertedARG, ARG), convert_answer(rec_eval(ConvertedARG), Value), print(Value), nl.
-process_input([is, ARG, argument]):- term_string(ConvertedARG, ARG), convert_answer(argument(ConvertedARG), Value), print(Value), nl.
+process_input([is, ARG, evaluable]):- term_string(ConvertedARG, ARG), convert_answer(rec_eval(ConvertedARG), Value, yes, no), print(Value), nl.
+process_input([is, ARG, argument]):- term_string(ConvertedARG, ARG), convert_answer(argument(ConvertedARG), Value, yes, no), print(Value), nl.
 process_input([get, reasons, A]):- get_reasons(ReasonsList, A), print_prop_labels(ReasonsList).
 process_input([get, evidences, A]):- get_evidences(EvidencesList, A), print_prop_labels(EvidencesList).
 process_input([help]) :- write("List of commands:
@@ -105,5 +104,5 @@ N.B.: Argument must resemble the following structure: [R,E,C], where:
 ").
 
 % Handles input that is not a recognized command
-process_input([_]):-write("command not recognized.\n"). 
+process_input(_):-write("command not recognized.\n"). 
 
