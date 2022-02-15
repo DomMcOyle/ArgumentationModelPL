@@ -26,10 +26,10 @@ all_facts([]) :- !.
 all_facts([H|T]) :- type(H, fact), all_facts(T).
 
 
-% recover all the reasons for a given claim
-get_reasons(Reasons, Claim) :- findall(Y, link(Y, Claim, reason), ReasonsList), same_set(Reasons, ReasonsList), all_proposition(Reasons).
-% recover all the evidences for a given claim
-get_evidences(Evidences, Claim) :- findall(Y, link(Y, Claim, evidence), EvidencesList), same_set(Evidences, EvidencesList), all_evidence(Evidences).
+% recover all the reasons for a given conclusion
+get_reasons(Reasons, Conclusion) :- findall(Y, link(Y, Conclusion, reason), ReasonsList), same_set(Reasons, ReasonsList), all_proposition(Reasons).
+% recover all the evidences for a given conclusion
+get_evidences(Evidences, Conclusion) :- findall(Y, link(Y, Conclusion, evidence), EvidencesList), same_set(Evidences, EvidencesList), all_evidence(Evidences).
 
 % definition of argument
 argument(A) :- A = [R, E, C], is_proposition(C), get_reasons(R, C), get_evidences(E, C).
@@ -47,7 +47,7 @@ evaluable(A) :- A = [R, _, C], argument(A), type(C, fact), length(R, L), L =\= 0
 %fourth condition
 evaluable(A) :- A = [R, E, C], argument(A), type(C, fact), length(R, L), L =\= 0, all_evidence(E).
 
-% definition of 'recursive evaluation' that is satisfiable iff an argument and all its sub-arguments are evaluable
+% definition of 'recursive evaluablity' that is satisfiable iff an argument and all its sub-arguments are evaluable
 rec_eval(A) :- evaluable(A), A = [[H|_], _, _], SubA = [_, _, H], argument(SubA), rec_eval(SubA).
 rec_eval(A) :- evaluable(A), A = [[], _, _].
 
