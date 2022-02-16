@@ -1,4 +1,3 @@
-
 % pre processor directives: the following propositions are the one exported to the interface
 :- module(core, [get_reasons/2, get_evidences/2, argument/1, rec_eval/1]).
 
@@ -29,11 +28,13 @@ all_facts([H|T]) :- type(H, fact), all_facts(T).
 
 % recover all the reasons for a given conclusion
 get_reasons(Reasons, Conclusion) :- findall(Y, link(Y, Conclusion, reason), ReasonsList), same_set(Reasons, ReasonsList), all_proposition(Reasons).
+
 % recover all the evidences for a given conclusion
 get_evidences(Evidences, Conclusion) :- findall(Y, link(Y, Conclusion, evidence), EvidencesList), same_set(Evidences, EvidencesList), all_evidence(Evidences).
 
 % definition of argument.
-argument1(A) :- A = [R, E, C], is_proposition(C), get_reasons(AllR, C), is_subset(AllR, R), get_evidences(AllE, C), is_subset(AllE, E).
+% It is provable also in case the reason set (R) and/or the evidence set are a subset of the whole reason set and/or evidence set in the knowledge base.
+argument(A) :- A = [R, E, C], is_proposition(C), get_reasons(AllR, C), is_subset(AllR, R), get_evidences(AllE, C), is_subset(AllE, E).
 
 % or clauses for the definition of evaluable
 % first condition
@@ -45,8 +46,8 @@ evaluable(A) :- A = [R, _, C], argument(A), type(C, value), length(R, L), L =\= 
 
 % third condition
 evaluable(A) :- A = [R, _, C], argument(A), type(C, fact), length(R, L), L =\= 0, all_facts(R).
-%fourth condition
-evaluable(A) :- A = [R, E, C], argument(A), type(C, fact), length(R, L), L =\= 0, all_evidence(E).
+% fourth condition
+evaluable(A) :- A = [_, E, C], argument(A), type(C, fact), length(E, L), L =\= 0, all_evidence(E).
 
 % definition of 'recursive evaluablity' that is satisfiable iff an argument and all its sub-arguments are evaluable
 rec_eval(A) :- evaluable(A), A = [[H|_], _, _], SubA = [_, _, H], argument(SubA), rec_eval(SubA).
@@ -68,12 +69,11 @@ not_member(X, [X|_]):- !, fail.
 not_member(X, [_|L]) :- not_member(X, L).
        
 
-%checks if a given set Sub is a subset of SuperSet (Can generate all the ordered subset of SuperSet)   
-asubset([], []).
-asubset([E|Tail], [E|NTail]):- asubset(Tail, NTail).
-asubset([_|Tail], NTail):- asubset(Tail, NTail).
+% provable if a given set Sub is a ordered subset of SuperSet (Can generate all the ordered subset of SuperSet)   
+ord_subset([], []).
+ord_subset([E|Tail], [E|NTail]):- ord_subset(Tail, NTail).
+ord_subset([_|Tail], NTail):- ord_subset(Tail, NTail).
 
 
-%checks if a given set Sub is a subset of SuperSet
-is_subset(SuperSet, Sub) :- asubset(SuperSet, SubSet), same_set(SubSet, Sub).
-
+% provable if a given set Sub is a subset of SuperSet
+is_subset(SuperSet, Sub) :- ord_subset(SuperSet, SubSet), same_set(SubSet, Sub).

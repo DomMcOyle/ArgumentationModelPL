@@ -51,8 +51,8 @@ print_list([H|T]):- rec_print([H, "\n"]), print_list(T).
 
 % Custom print for the arguments
 print_arguments([]) :- write("Empty set.\n"), !.
-print_arguments([[R, E, C]|[]]) :- rec_print(["argument with conclusion: ", C, "\nhas relation set: ", R, "\nhas evidence set: ", E, "\n"]), !.
-print_arguments([[R, E, C]|T]) :- rec_print(["argument with conclusion: ", C, "\nhas relation set: ", R, "\nhas evidence set: ", E, "\n"]), print_arguments(T).
+print_arguments([[R, E, C]|[]]) :- rec_print(["argument with conclusion: ", C, "\nhas reason set: ", R, "\nhas evidence set: ", E, "\n"]), !.
+print_arguments([[R, E, C]|T]) :- rec_print(["argument with conclusion: ", C, "\nhas reason set: ", R, "\nhas evidence set: ", E, "\n"]), print_arguments(T).
 
 
 % Converts the answer from its unified value to the atom unified with TrueValue, if the value is true, with FalseValue otherwise
@@ -93,8 +93,8 @@ process_input([help]) :- write("List of commands:
 -type Variable: shows the type of the proposition associated with the code Variable.
 -is Argument evaluable: shows \"yes\" if the argument passed in Argument is evaluable, \"no\" otherwise.
 -is Argument argument: shows \"yes\" if the argument passed in Argument is well defined, \"no\" otherwise.
--get reasons Conclusion: shows the set of reasons for the conclusion Conclusion.
--get evidences Conclusion: shows the set of evidences for the conclusion Conclusion.
+-get reasons Conclusion: shows the maximal set of reasons in the KB for the conclusion Conclusion.
+-get evidences Conclusion: shows the maximal set of evidences in the KB for the conclusion Conclusion.
 -help: shows this.
 -quit: closes the dialogue and unloads the KB.
 N.B.: Argument must resemble the following structure: [R,E,C], where:
