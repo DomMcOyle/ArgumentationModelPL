@@ -1,3 +1,4 @@
+
 % pre processor directives: the following propositions are the one exported to the interface
 :- module(core, [get_reasons/2, get_evidences/2, argument/1, rec_eval/1]).
 
@@ -31,10 +32,8 @@ get_reasons(Reasons, Conclusion) :- findall(Y, link(Y, Conclusion, reason), Reas
 % recover all the evidences for a given conclusion
 get_evidences(Evidences, Conclusion) :- findall(Y, link(Y, Conclusion, evidence), EvidencesList), same_set(Evidences, EvidencesList), all_evidence(Evidences).
 
-% definition of argument. Has different behavour depending on the necessity of generating subsets or only checking them
-argument(A) :- (var(A) -> 
-	A = [R, E, C], is_proposition(C), get_reasons(AllR, C), is_subset(AllR, R), get_evidences(AllE, C), is_subset(AllE, E); 
-	A = [R, E, C], is_proposition(C), get_reasons(AllR, C), asubset(AllR, R), get_evidences(AllE, C), asubset(AllE, E)).
+% definition of argument.
+argument1(A) :- A = [R, E, C], is_proposition(C), get_reasons(AllR, C), is_subset(AllR, R), get_evidences(AllE, C), is_subset(AllE, E).
 
 % or clauses for the definition of evaluable
 % first condition
