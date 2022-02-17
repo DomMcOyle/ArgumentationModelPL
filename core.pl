@@ -19,7 +19,7 @@ all_proposition([H|T]) :- is_proposition(H), all_proposition(T).
 
 % support predicates that are satisfiables if all the proposition in a given list belong to the set "evidence" or if the list is empty
 all_evidence([]) :- !.
-all_evidence([H|T]) :- is_evidence(H), all_proposition(T).
+all_evidence([H|T]) :- is_evidence(H), all_evidence(T).
 
 % support predicates that are satisfiables if all the proposition in a given list are facts or if the list is empty
 all_facts([]) :- !.
@@ -50,7 +50,7 @@ evaluable(A) :- A = [R, _, C], argument(A), type(C, fact), length(R, L), L =\= 0
 evaluable(A) :- A = [_, E, C], argument(A), type(C, fact), length(E, L), L =\= 0, all_evidence(E).
 
 % definition of 'recursive evaluablity' that is satisfiable iff an argument and all its sub-arguments are evaluable
-rec_eval(A) :- evaluable(A), A = [[H|_], _, _], SubA = [_, _, H], argument(SubA), rec_eval(SubA).
+rec_eval(A) :- evaluable(A), A = [[H|_], _, _], SubA = [_, _, H], rec_eval(SubA).
 rec_eval(A) :- evaluable(A), A = [[], _, _].
 
 % utilities
@@ -63,11 +63,6 @@ remove([], _, []).
 remove([R|T], R, T).
 remove([H|T], R, [H|L]) :- R \= H, remove(T, R, L).
 
-% utility to check if an element is not a member of a given list
-not_member(_, []).
-not_member(X, [X|_]):- !, fail.
-not_member(X, [_|L]) :- not_member(X, L).
-       
 
 % provable if a given set Sub is a ordered subset of SuperSet (Can generate all the ordered subset of SuperSet)   
 ord_subset([], []).
@@ -75,5 +70,8 @@ ord_subset([E|Tail], [E|NTail]):- ord_subset(Tail, NTail).
 ord_subset([_|Tail], NTail):- ord_subset(Tail, NTail).
 
 
-% provable if a given set Sub is a subset of SuperSet
-is_subset(SuperSet, Sub) :- ord_subset(SuperSet, SubSet), same_set(SubSet, Sub).
+% provable if a given set Sub is a subset of SuperSet.
+% The cut avoids producing all the arguments with non maximal reason and evidence sets, but allowing still to check arguments with non maximal set.
+% e.g.: [[a,b,c],[d,e],f] is the argument with maximal evidence and reason set. Only that one is returned when querying 'argument(A)' but if one queries argument([b,c],[],f])
+% the result is still checked, and if it resembles a well formed argument, 'true' is returned
+is_subset(SuperSet, Sub) :- ord_subset(SuperSet, SubSet), same_set(SubSet, Sub), !.

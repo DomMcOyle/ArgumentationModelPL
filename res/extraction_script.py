@@ -57,7 +57,7 @@ def obtain_kbs(dir_name, dest_dir):
 
 # interrogation script
 
-dir_name = "train"
+dir_name = "test"
 dest_dir = "kbs"
 
 obtain_kbs(dir_name, dest_dir)

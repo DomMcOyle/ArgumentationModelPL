@@ -83,8 +83,8 @@ process_input([get, evidences, A]):- get_evidences(EvidencesList, A), print_prop
 process_input([help]) :- write("List of commands:
 -show relations: shows the complete list of relations between propositions in the loaded KB.
 -show proptext: shows the complete list of propositions codes with the corresponding sentence from the text.
--show arguments: shows all the stuctures in the KB that resemble the definition of argument.
--show evaluables: shows all the structures in the KB that resemble the definition of evaluable argument.
+-show arguments: shows all the stuctures in the KB that resemble the definition of argument with maximal reason and evidence sets.
+-show evaluables: shows all the structures in the KB that resemble the definition of evaluable argument with maximal reason and evidence sets.
 -show values: shows all the proposition codes marked as \"value\" in the KB.
 -show facts: shows all the proposition codes marked as \"fact\" in the KB.
 -show references: shows all the proposition codes marked as \"reference\" in the KB.
